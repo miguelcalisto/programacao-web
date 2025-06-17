@@ -1,0 +1,35 @@
+
+<div class="card">
+  <div class="card-header">Lista de Contatos</div>
+  <div class="card-body">
+    <table class="table table-hover align-middle">
+      <thead>
+        <tr>
+          <th>Foto</th>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Telefone</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contato of contatos">
+          <td>
+            <img *ngIf="contato.foto" [src]="contato.foto" width="60" class="img-thumbnail">
+          </td>
+          <td>{{ contato.nome }}</td>
+          <td>{{ contato.email }}</td>
+          <td>{{ contato.telefone }}</td>
+          <td>
+            <a [routerLink]="['/contatos/editar', contato.id]" class="btn btn-sm btn-primary me-2">Editar</a>
+            <a [routerLink]="['/contatos/detalhes', contato.id]" class="btn btn-sm btn-info me-2">Detalhes</a>
+            <button (click)="excluir(contato.id!)" class="btn btn-sm btn-danger">Excluir</button>
+          </td>
+        </tr>
+        <tr *ngIf="contatos.length === 0">
+          <td colspan="5" class="text-center text-muted">Nenhum contato encontrado.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

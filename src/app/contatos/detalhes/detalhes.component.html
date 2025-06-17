@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-header">Detalhes do Contato</div>
+  <div class="card-body" *ngIf="contato">
+    <div class="text-center mb-3">
+      <img [src]="contato.foto" alt="Foto" class="img-thumbnail" width="150" *ngIf="contato?.foto">
+    </div>
+
+    <p><strong>Nome:</strong> {{ contato?.nome }}</p>
+    <p><strong>Email:</strong> {{ contato?.email }}</p>
+    <p><strong>Telefone:</strong> {{ contato?.telefone }}</p>
+    <p><strong>Endereço:</strong> {{ contato?.endereco }}</p>
+
+    <button class="btn btn-secondary mt-3" (click)="voltar()">Voltar</button>
+  </div>
+</div>
+
