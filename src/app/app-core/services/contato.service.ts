@@ -4,9 +4,9 @@ import { Contato } from '../model/contato.model';
 import { Status } from '../model/status.model';
 
 export const STATUS_LIST: Status[] = [
-  { id: 1, nome: 'Ativo' },
-  { id: 2, nome: 'Inativo' }
- 
+  { id: 1, nome: 'Ativo', descricao: 'Contato ativo', cor: 'success' },
+  { id: 2, nome: 'Inativo', descricao: 'Contato inativo', cor: 'danger' }
+  
 ];
 
 

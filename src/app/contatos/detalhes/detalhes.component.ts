@@ -49,4 +49,18 @@ export class DetalhesComponent implements OnInit {
   const status = this.statusList.find(s => s.id === statusId);
   return status ? status.nome : 'Sem status';
 }
+
+
+getStatusDescricao(): string {
+  if (!this.contato) return '';
+  const status = this.statusList.find(s => s.id === Number(this.contato!.statusId));
+  return status ? status.descricao : '';
+}
+
+getStatusCor(): string {
+  if (!this.contato) return 'secondary';
+  const status = this.statusList.find(s => s.id === Number(this.contato!.statusId));
+  return status ? status.cor : 'secondary';
+}
+
 }

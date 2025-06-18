@@ -9,7 +9,11 @@
     <p><strong>Email:</strong> {{ contato?.email }}</p>
     <p><strong>Telefone:</strong> {{ contato?.telefone }}</p>
     <p><strong>Endereço:</strong> {{ contato?.endereco }}</p>
-   <p><strong>Status:</strong> {{ getStatusNome() }}</p>
+  <p>
+  <strong>Status:</strong>
+  <span class="badge bg-{{ getStatusCor() }}">{{ getStatusNome() }}</span>
+</p>
+<p><strong>Descrição:</strong> {{ getStatusDescricao() }}</p>
 
 
 
