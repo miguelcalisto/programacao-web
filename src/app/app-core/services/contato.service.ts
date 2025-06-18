@@ -1,10 +1,21 @@
 import { Injectable } from '@angular/core';
 import { openDB, IDBPDatabase } from 'idb';
 import { Contato } from '../model/contato.model';
+import { Status } from '../model/status.model';
+
+export const STATUS_LIST: Status[] = [
+  { id: 1, nome: 'Ativo' },
+  { id: 2, nome: 'Inativo' }
+ 
+];
+
+
+
 
 const DB_NAME = 'agenda-contatos-db';
 const STORE_NAME = 'contatos';
 const DB_VERSION = 1;
+
 
 @Injectable({
   providedIn: 'root'

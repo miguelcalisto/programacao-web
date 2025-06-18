@@ -9,6 +9,9 @@
     <p><strong>Email:</strong> {{ contato?.email }}</p>
     <p><strong>Telefone:</strong> {{ contato?.telefone }}</p>
     <p><strong>Endereço:</strong> {{ contato?.endereco }}</p>
+   <p><strong>Status:</strong> {{ getStatusNome() }}</p>
+
+
 
     <button class="btn btn-secondary mt-3" (click)="voltar()">Voltar</button>
   </div>

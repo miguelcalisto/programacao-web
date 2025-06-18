@@ -6,4 +6,5 @@ export class Contato {
   telefone!: string;
   endereco?: string;
   foto?: string; // base64 da imagem
+  statusId?: number;  // ← Novo campo relacionado ao Status
 }

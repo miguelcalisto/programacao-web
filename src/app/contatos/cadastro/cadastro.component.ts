@@ -1,10 +1,15 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import Swal from 'sweetalert2';
+
 
 import { Contato } from '../../app-core/model/contato.model';
-import { ContatoService } from '../../app-core/services/contato.service';
+
+import { ContatoService, STATUS_LIST } from '../../app-core/services/contato.service';
+import { Status } from '../../app-core/model/status.model';
 
 @Component({
   selector: 'app-cadastro',
@@ -15,7 +20,7 @@ import { ContatoService } from '../../app-core/services/contato.service';
 })
 export class CadastroComponent implements OnInit {
   contato: Contato = new Contato();
-
+statusList: Status[] = STATUS_LIST;
   constructor(
     private contatoService: ContatoService,
     private router: Router,
@@ -36,14 +41,34 @@ export class CadastroComponent implements OnInit {
     }
   }
 
-  async salvar() {
+ async salvar() {
+  if (!this.contato.nome) {
+    Swal.fire('Erro', 'O campo Nome é obrigatório!', 'error');
+    return;
+  }
+   if (!this.contato.email || !this.contato.email.includes('@')) {
+    Swal.fire('Erro', 'Informe um Email válido!', 'error');
+    return;
+  }
+
+  if (!this.contato.statusId) {
+    Swal.fire('Erro', 'Selecione um Status!', 'error');
+    return;
+  }
+
+ try {
     if (this.contato.id) {
       await this.contatoService.atualizar(this.contato);
+      Swal.fire('Sucesso', 'Contato atualizado com sucesso!', 'success');
     } else {
       await this.contatoService.adicionar(this.contato);
+      Swal.fire('Sucesso', 'Contato salvo com sucesso!', 'success');
     }
     this.router.navigate(['/contatos']);
+  } catch (error) {
+    Swal.fire('Erro', 'Ocorreu um problema ao salvar o contato.', 'error');
   }
+}
 
   onFileSelected(event: any) {
     const file = event.target.files[0];
@@ -56,4 +81,3 @@ export class CadastroComponent implements OnInit {
     }
   }
 }
-
