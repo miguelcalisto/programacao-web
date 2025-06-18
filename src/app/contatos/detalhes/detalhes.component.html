@@ -5,10 +5,10 @@
       <img [src]="contato.foto" alt="Foto" class="img-thumbnail" width="150" *ngIf="contato?.foto">
     </div>
 
-    <p><strong>Nome:</strong> {{ contato?.nome }}</p>
-    <p><strong>Email:</strong> {{ contato?.email }}</p>
-    <p><strong>Telefone:</strong> {{ contato?.telefone }}</p>
-    <p><strong>Endereço:</strong> {{ contato?.endereco }}</p>
+    <p><strong>Nome:</strong> {{ contato.nome }}</p>
+    <p><strong>Email:</strong> {{ contato.email }}</p>
+    <p><strong>Telefone:</strong> {{ contato.telefone }}</p>
+    <p><strong>Endereço:</strong> {{ contato.endereco }}</p>
   <p>
   <strong>Status:</strong>
   <span class="badge bg-{{ getStatusCor() }}">{{ getStatusNome() }}</span>
