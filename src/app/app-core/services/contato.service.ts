@@ -26,11 +26,28 @@ export class ContatoService {
     });
   }
 
-  async adicionar(contato: Contato): Promise<number> {
-    const db = await this.dbPromise;
+  // async adicionar(contato: Contato): Promise<number> {
+  //   const db = await this.dbPromise;
 
-    return await db.add(STORE_NAME, contato) as number;
-  }
+  //   return await db.add(STORE_NAME, contato) as number;
+  // }
+//   async adicionar(contato: Contato): Promise<number> {
+//   const db = await this.dbPromise;
+//   const id = await db.add(STORE_NAME, contato) as number;
+//   contato.id = id;  // <- Atualiza o objeto na memória com o id gerado
+//   return id;
+// }
+async adicionar(contato: Contato): Promise<number> {
+  const db = await this.dbPromise;
+
+  // Remover qualquer id manual antes de adicionar
+  const contatoSemId = { ...contato };
+  delete contatoSemId.id;
+
+  const id = await db.add(STORE_NAME, contatoSemId) as number;
+  contato.id = id;  // Agora o id correto
+  return id;
+}
 
   async listarTodos(): Promise<Contato[]> {
     const db = await this.dbPromise;
