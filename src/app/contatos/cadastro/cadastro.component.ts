@@ -50,6 +50,10 @@ statusList: Status[] = STATUS_LIST;
     Swal.fire('Erro', 'Informe um Email válido!', 'error');
     return;
   }
+    if (!this.contato.telefone) {
+    Swal.fire('Erro', 'O campo Telefone é obrigatório!', 'error');
+    return;
+  }
 
   if (!this.contato.statusId) {
     Swal.fire('Erro', 'Selecione um Status!', 'error');
