@@ -12,19 +12,22 @@
         </div>
       </div>
 
-      <!-- Email (obrigatório + email válido) -->
+      <!-- Email (obrigatório + formato válido) -->
       <div class="mb-3">
         <label class="form-label">Email</label>
-        <input type="email" class="form-control" [(ngModel)]="contato.email" name="email" required email>
-        <div *ngIf="form.submitted && (!contato.email || form.controls['email']?.invalid)" class="text-danger">
-          Email é obrigatório e deve ser válido.
+        <input type="email" class="form-control" [(ngModel)]="contato.email" name="email" required email #emailInput="ngModel">
+        <div *ngIf="form.submitted && emailInput.invalid" class="text-danger">
+          Informe um email válido.
         </div>
       </div>
 
-      <!-- Telefone (opcional, mas pode validar se quiser) -->
+      <!-- Telefone (obrigatório) -->
       <div class="mb-3">
         <label class="form-label">Telefone</label>
-        <input type="text" class="form-control" [(ngModel)]="contato.telefone" name="telefone">
+        <input type="text" class="form-control" [(ngModel)]="contato.telefone" name="telefone" required>
+        <div *ngIf="form.submitted && !contato.telefone" class="text-danger">
+          Telefone é obrigatório.
+        </div>
       </div>
 
       <!-- Endereço (opcional) -->

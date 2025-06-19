@@ -35,7 +35,9 @@ statusList: Status[] = STATUS_LIST;
       if (contatoExistente) {
         this.contato = contatoExistente;
       } else {
-        alert('Contato não encontrado!');
+        // alert('Contato não encontrado!');
+        Swal.fire('Erro', 'Contato não encontrado!', 'error');
+
         this.router.navigate(['/contatos']);
       }
     }
