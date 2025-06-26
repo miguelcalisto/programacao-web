@@ -45,7 +45,7 @@ export class DetalhesComponent implements OnInit {
   if (!this.contato) {
     return 'Sem status';
   }
-  const statusId = Number(this.contato.statusId);  // ← CONVERTE STRING PARA NÚMERO
+  const statusId = Number(this.contato.statusId);  
   const status = this.statusList.find(s => s.id === statusId);
   return status ? status.nome : 'Sem status';
 }

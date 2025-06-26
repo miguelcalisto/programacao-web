@@ -1,7 +1,7 @@
 export interface Status {
   id: number;
   nome: string;
- descricao: string;   // Novo campo
+ descricao: string;  
   cor: string;
   
 }
