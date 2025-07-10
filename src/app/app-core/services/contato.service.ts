@@ -1,22 +1,19 @@
-// Serviço principal responsável por interagir com o banco de dados IndexedDB
+
 import { Injectable } from '@angular/core';
 import { openDB, IDBPDatabase } from 'idb';
 import { Contato } from '../model/contato.model';
 import { Status } from '../model/status.model';
 
-// Lista de status disponíveis no sistema com nome, descrição e cor
-// A cor será usada para estilização visual (ex: badge colorida)
+
 export const STATUS_LIST: Status[] = [
   { id: 1, nome: 'Ativo', descricao: 'Contato ativo', cor: 'success' },
   { id: 2, nome: 'Inativo', descricao: 'Contato inativo', cor: 'danger' }
 ];
 
-// Definições do banco
 const DB_NAME = 'agenda-contatos-db';
 const STORE_NAME = 'contatos';
 const DB_VERSION = 1;
 
-// Decorador que indica que o serviço será injetável em toda a aplicação
 @Injectable({
   providedIn: 'root'
 })
@@ -24,7 +21,6 @@ export class ContatoService {
   private dbPromise: Promise<IDBPDatabase>;
 
   constructor() {
-    // Inicializa o banco de dados ao instanciar o serviço
     this.dbPromise = this.initDB();
   }
 

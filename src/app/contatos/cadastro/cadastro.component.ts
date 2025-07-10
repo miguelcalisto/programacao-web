@@ -1,20 +1,15 @@
-// Importações principais do Angular
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-// Biblioteca externa para exibir alertas personalizados
 import Swal from 'sweetalert2';
 
-// Modelo de dados do Contato
 import { Contato } from '../../app-core/model/contato.model';
 
-// Serviço que faz as operações de CRUD com IndexedDB e lista de status
 import { ContatoService, STATUS_LIST } from '../../app-core/services/contato.service';
 import { Status } from '../../app-core/model/status.model';
 
-// Decorador que define esse componente como independente (standalone)
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
@@ -24,13 +19,10 @@ import { Status } from '../../app-core/model/status.model';
 })
 export class CadastroComponent implements OnInit {
 
-  // Objeto contato que será preenchido pelo formulário
   contato: Contato = new Contato();
 
-  // Lista de status disponíveis (ativo/inativo) usada no dropdown
   statusList: Status[] = STATUS_LIST;
 
-  // Injetamos o serviço de contatos e as rotas para capturar parâmetros
   constructor(
     private contatoService: ContatoService,
     private router: Router,
@@ -58,7 +50,6 @@ export class CadastroComponent implements OnInit {
     }
   }
 
-  // Função chamada ao submeter o formulário
   async salvar() {
     // Validações básicas nos campos antes de salvar
     if (!this.contato.nome) {
@@ -82,7 +73,6 @@ export class CadastroComponent implements OnInit {
     }
 
     try {
-      // Verifica se o contato já existe (modo edição) ou é novo (modo criação)
       if (this.contato.id) {
         await this.contatoService.atualizar(this.contato);
         Swal.fire('Sucesso', 'Contato atualizado com sucesso!', 'success');
@@ -91,7 +81,6 @@ export class CadastroComponent implements OnInit {
         Swal.fire('Sucesso', 'Contato salvo com sucesso!', 'success');
       }
 
-      // Após salvar, redireciona para a lista de contatos
       this.router.navigate(['/contatos']);
 
     } catch (error) {
@@ -99,7 +88,7 @@ export class CadastroComponent implements OnInit {
     }
   }
 
-  // Função que lida com o upload da imagem e converte para base64
+  // imagem
   onFileSelected(event: any) {
     const file = event.target.files[0];
 
