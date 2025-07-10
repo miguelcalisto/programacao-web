@@ -29,9 +29,9 @@ export class CadastroComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  // ngOnInit roda ao iniciar o componente
+  // ngOnInit
   async ngOnInit() {
-    // Verifica se existe um "id" na rota (para modo de edição)
+    // Verifica se existe um "id" na rota
     const idParam = this.route.snapshot.paramMap.get('id');
     if (idParam) {
       const id = Number(idParam);
