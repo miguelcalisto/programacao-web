@@ -1,8 +1,8 @@
 export interface Status {
   id: number;
-  nome: string;
- descricao: string;  
+  nome: string; //ativo ou inativo
+ descricao: string;
   cor: string;
-  
+
 }
 
