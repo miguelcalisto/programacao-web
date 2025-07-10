@@ -24,7 +24,7 @@ export class ContatoService {
     this.dbPromise = this.initDB();
   }
 
-  // Método responsável por criar o banco e a store (tabela) se não existirem
+  // Método responsável por criar o banco
   private async initDB(): Promise<IDBPDatabase> {
     return await openDB(DB_NAME, DB_VERSION, {
       upgrade(db) {
