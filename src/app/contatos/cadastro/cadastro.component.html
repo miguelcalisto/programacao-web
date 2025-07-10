@@ -1,9 +1,8 @@
-<!-- Componente visual de cadastro de contatos -->
 <div class="card">
   <div class="card-header">Cadastro de Contato</div>
   <div class="card-body">
 
-    <!-- Formulário principal que chama o método salvar() no submit -->
+    <!-- salvar-->
     <form (ngSubmit)="salvar()" #form="ngForm">
 
       <!-- Campo Nome: obrigatório -->
@@ -11,7 +10,7 @@
         <label class="form-label">Nome</label>
         <input type="text" class="form-control" [(ngModel)]="contato.nome" name="nome" required>
 
-        <!-- Mensagem de erro exibida se o formulário for submetido e o nome estiver vazio -->
+        <!-- obrigatorio -->
         <div *ngIf="form.submitted && !contato.nome" class="text-danger">
           Nome é obrigatório.
         </div>
@@ -33,7 +32,7 @@
         <label class="form-label">Telefone</label>
         <input type="text" class="form-control" [(ngModel)]="contato.telefone" name="telefone" required>
 
-        <!-- Mensagem de erro se o telefone não for preenchido -->
+        <!-- obrigatorio-->
         <div *ngIf="form.submitted && !contato.telefone" class="text-danger">
           Telefone é obrigatório.
         </div>
@@ -45,12 +44,11 @@
         <input type="text" class="form-control" [(ngModel)]="contato.endereco" name="endereco">
       </div>
 
-      <!-- Campo Status: obrigatório - popula com base na lista de status -->
+      <!-- Campo Status: obrigatório  -->
       <div class="mb-3">
         <label for="status">Status:</label>
         <select id="status" [(ngModel)]="contato.statusId" name="statusId" class="form-control" required>
           <option [ngValue]="null">Selecione...</option>
-          <!-- Geração dinâmica das opções com *ngFor -->
           <option *ngFor="let status of statusList" [value]="status.id">{{ status.nome }}</option>
         </select>
 
